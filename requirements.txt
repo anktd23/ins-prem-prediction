@@ -15,4 +15,6 @@ websockets==10.3
 wincertstore==0.2
 xgboost==1.6.2
 PyYAML
+numpy
+scikit-learn
 -e .

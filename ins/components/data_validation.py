@@ -7,7 +7,7 @@ import os,sys
 import pandas as pd
 from ins import utils
 import numpy as np
-
+from ins.config import TARGET_COLUMN
 
 
 
