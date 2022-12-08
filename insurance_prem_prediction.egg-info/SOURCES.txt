@@ -4,6 +4,7 @@ ins/__init__.py
 ins/config.py
 ins/exception.py
 ins/logger.py
+ins/predictor.py
 ins/utils.py
 ins/components/__init__.py
 ins/components/data_ingestion.py
