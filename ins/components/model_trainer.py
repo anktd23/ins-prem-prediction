@@ -3,9 +3,9 @@ from ins.exception import SensorException
 from ins.logger import logging
 from typing import Optional
 import os,sys 
-from xgboost import XGBClassifier
+from sklearn.ensemble import RandomForestRegressor
 from ins import utils
-from sklearn.metrics import f1_score
+from sklearn.metrics import r2_score
 
 
 class ModelTrainer:
@@ -33,9 +33,9 @@ class ModelTrainer:
 
     def train_model(self,x,y):
         try:
-            xgb_clf =  XGBClassifier()
-            xgb_clf.fit(x,y)
-            return xgb_clf
+            rf_reg =  RandomForestRegressor()
+            rf_reg.fit(x,y)
+            return rf_reg
         except Exception as e:
             raise SensorException(e, sys)
 
@@ -53,23 +53,23 @@ class ModelTrainer:
             logging.info(f"Train the model")
             model = self.train_model(x=x_train,y=y_train)
 
-            logging.info(f"Calculating f1 train score")
+            logging.info(f"Calculating r2 train score")
             yhat_train = model.predict(x_train)
-            f1_train_score  =f1_score(y_true=y_train, y_pred=yhat_train)
+            r2_train_score  =r2_score(y_true=y_train, y_pred=yhat_train)
 
             logging.info(f"Calculating f1 test score")
             yhat_test = model.predict(x_test)
-            f1_test_score  =f1_score(y_true=y_test, y_pred=yhat_test)
+            r2_test_score  =r2_score(y_true=y_test, y_pred=yhat_test)
             
-            logging.info(f"train score:{f1_train_score} and tests score {f1_test_score}")
+            logging.info(f"train score:{r2_train_score} and tests score {r2_test_score}")
             #check for overfitting or underfiiting or expected score
             logging.info(f"Checking if our model is underfitting or not")
-            if f1_test_score<self.model_trainer_config.expected_score:
+            if r2_test_score<self.model_trainer_config.expected_score:
                 raise Exception(f"Model is not good as it is not able to give \
-                expected accuracy: {self.model_trainer_config.expected_score}: model actual score: {f1_test_score}")
+                expected accuracy: {self.model_trainer_config.expected_score}: model actual score: {r2_test_score}")
 
             logging.info(f"Checking if our model is overfiiting or not")
-            diff = abs(f1_train_score-f1_test_score)
+            diff = abs(r2_train_score-r2_test_score)
 
             if diff>self.model_trainer_config.overfitting_threshold:
                 raise Exception(f"Train and test score diff: {diff} is more than overfitting threshold {self.model_trainer_config.overfitting_threshold}")
@@ -81,7 +81,7 @@ class ModelTrainer:
             #prepare artifact
             logging.info(f"Prepare the artifact")
             model_trainer_artifact  = artifact_entity.ModelTrainerArtifact(model_path=self.model_trainer_config.model_path, 
-            f1_train_score=f1_train_score, f1_test_score=f1_test_score)
+            r2_train_score=r2_train_score, r2_test_score=r2_test_score)
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
         except Exception as e:

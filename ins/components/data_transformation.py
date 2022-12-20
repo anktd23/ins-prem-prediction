@@ -33,9 +33,11 @@ class DataTransformation:
         try:
             simple_imputer = SimpleImputer(strategy='constant', fill_value=0)
             robust_scaler =  RobustScaler()
+            ohe = OneHotEncoder()
             pipeline = Pipeline(steps=[
                     ('Imputer',simple_imputer),
-                    ('RobustScaler',robust_scaler)
+                    ('RobustScaler',robust_scaler),
+                    ('OneHotEncoding',ohe)
                 ])
             return pipeline
         except Exception as e:
@@ -56,12 +58,9 @@ class DataTransformation:
             target_feature_train_df = train_df[TARGET_COLUMN]
             target_feature_test_df = test_df[TARGET_COLUMN]
 
-            ohe = OneHotEncoder()
-            ohe.fit(input_feature_train_df)
-
             #transformation on target columns
-            target_feature_train_arr = label_encoder.transform(target_feature_train_df)
-            target_feature_test_arr = label_encoder.transform(target_feature_test_df)
+            target_feature_train_arr = robust_scalar.transform(target_feature_train_df)
+            target_feature_test_arr = robust_scalar.transform(target_feature_test_df)
 
             transformation_pipleine = DataTransformation.get_data_transformer_object()
             transformation_pipleine.fit(input_feature_train_df)

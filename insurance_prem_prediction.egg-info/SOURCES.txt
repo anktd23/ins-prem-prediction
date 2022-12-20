@@ -17,6 +17,7 @@ ins/entity/__init__.py
 ins/entity/artifact_entity.py
 ins/entity/config_entity.py
 ins/pipeline/__init__.py
+ins/pipeline/batch_prediction.py
 ins/pipeline/training_pipeline.py
 insurance_prem_prediction.egg-info/PKG-INFO
 insurance_prem_prediction.egg-info/SOURCES.txt

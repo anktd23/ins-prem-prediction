@@ -3,7 +3,7 @@ from ins.entity import config_entity,artifact_entity
 from ins.exception import SensorException
 from ins.logger import logging
 from ins.utils import load_object
-from sklearn.metrics import f1_score
+from sklearn.metrics import r2_score
 import pandas  as pd
 import sys,os
 from ins.config import TARGET_COLUMN
@@ -81,7 +81,7 @@ class ModelEvaluation:
             y_pred = current_model.predict(input_arr)
             y_true =current_target_encoder.transform(target_df)
             print(f"Prediction using trained model: {current_target_encoder.inverse_transform(y_pred[:5])}")
-            current_model_score = f1_score(y_true=y_true, y_pred=y_pred)
+            current_model_score = r2_score(y_true=y_true, y_pred=y_pred)
             logging.info(f"Accuracy using current trained model: {current_model_score}")
             if current_model_score<=previous_model_score:
                 logging.info(f"Current trained model is not better than previous model")
