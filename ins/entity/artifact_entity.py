@@ -29,4 +29,7 @@ class ModelEvaluationArtifact:
     is_model_accepted:bool
     improved_accuracy:float
     
-class ModelPusherArtifact:...
+@dataclass
+class ModelPusherArtifact:
+    pusher_model_dir:str 
+    saved_model_dir:str
