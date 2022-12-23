@@ -7,12 +7,14 @@ from sklearn.pipeline import Pipeline
 import pandas as pd
 from ins import utils
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import OneHotEncoder
 from imblearn.combine import SMOTETomek
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import RobustScaler
-from ins.config import TARGET_COLUMN
-
+from ins.config import TARGET_COLUMN,num_col,cat_col
+from sklearn.compose import ColumnTransformer
+from sklearn.compose import make_column_transformer
+from sklearn.pipeline import make_pipeline
 
 
 class DataTransformation:
@@ -33,12 +35,8 @@ class DataTransformation:
         try:
             simple_imputer = SimpleImputer(strategy='constant', fill_value=0)
             robust_scaler =  RobustScaler()
-            ohe = OneHotEncoder()
-            pipeline = Pipeline(steps=[
-                    ('Imputer',simple_imputer),
-                    ('RobustScaler',robust_scaler),
-                    ('OneHotEncoding',ohe)
-                ])
+            ohe_enc = make_column_transformer((OneHotEncoder(sparse=False),cat_col), remainder='passthrough')
+            pipeline = make_pipeline(ohe_enc,simple_imputer,robust_scaler)
             return pipeline
         except Exception as e:
             raise SensorException(e, sys)
@@ -58,9 +56,6 @@ class DataTransformation:
             target_feature_train_df = train_df[TARGET_COLUMN]
             target_feature_test_df = test_df[TARGET_COLUMN]
 
-            #transformation on target columns
-            target_feature_train_arr = robust_scalar.transform(target_feature_train_df)
-            target_feature_test_arr = robust_scalar.transform(target_feature_test_df)
 
             transformation_pipleine = DataTransformation.get_data_transformer_object()
             transformation_pipleine.fit(input_feature_train_df)
