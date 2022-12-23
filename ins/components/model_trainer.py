@@ -57,7 +57,7 @@ class ModelTrainer:
             yhat_train = model.predict(x_train)
             r2_train_score  =r2_score(y_true=y_train, y_pred=yhat_train)
 
-            logging.info(f"Calculating f1 test score")
+            logging.info(f"Calculating r1 test score")
             yhat_test = model.predict(x_test)
             r2_test_score  =r2_score(y_true=y_test, y_pred=yhat_test)
             
