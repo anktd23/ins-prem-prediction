@@ -63,6 +63,11 @@ class DataTransformation:
             #transforming input features
             input_feature_train_arr = transformation_pipleine.transform(input_feature_train_df)
             input_feature_test_arr = transformation_pipleine.transform(input_feature_test_df)
+
+            #transforming target features
+            target_feature_train_arr = transformation_pipleine.transform(target_feature_train_df)
+            target_feature_test_arr = transformation_pipleine.transform(target_feature_test_df)
+            
             
 
             smt = SMOTETomek(sampling_strategy="minority")
