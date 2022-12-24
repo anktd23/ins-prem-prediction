@@ -8,11 +8,13 @@ class ModelResolver:
 
     def __init__(self,model_registry:str = "saved_models",
                 transformer_dir_name="transformer",
+                target_transformer_dir_name = "target_transformer",
                 model_dir_name = "model"):
 
         self.model_registry=model_registry
         os.makedirs(self.model_registry,exist_ok=True)
         self.transformer_dir_name = transformer_dir_name
+        self.target_transformer_dir_name=target_transformer_dir_name
         self.model_dir_name=model_dir_name
 
 
@@ -45,6 +47,15 @@ class ModelResolver:
         except Exception as e:
             raise e
 
+    def get_latest_target_transformer_path(self):
+        try:
+            latest_dir = self.get_latest_dir_path()
+            if latest_dir is None:
+                raise Exception(f"Target Transformer is not available")
+            return os.path.join(latest_dir,self.target_transformer_dir_name,TRANSFORMER_TARGET_OBJECT_FILE_NAME)
+        except Exception as e:
+            raise e
+
 
     def get_latest_save_dir_path(self)->str:
         try:
@@ -67,5 +78,12 @@ class ModelResolver:
         try:
             latest_dir = self.get_latest_save_dir_path()
             return os.path.join(latest_dir,self.transformer_dir_name,TRANSFORMER_OBJECT_FILE_NAME)
+        except Exception as e:
+            raise e
+
+    def get_latest_save_target_transformer_path(self):
+        try:
+            latest_dir = self.get_latest_save_dir_path()
+            return os.path.join(latest_dir,self.target_transformer_dir_name,TRANSFORMER_TARGET_OBJECT_FILE_NAME)
         except Exception as e:
             raise e
