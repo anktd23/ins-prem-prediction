@@ -7,6 +7,7 @@ FILE_NAME = "insurance.csv"
 TRAIN_FILE_NAME = "train.csv"
 TEST_FILE_NAME = "test.csv"
 TRANSFORMER_OBJECT_FILE_NAME = "transformer.pkl"
+TRANSFORMER_TARGET_OBJECT_FILE_NAME = "target_transformer.pkl"
 MODEL_FILE_NAME = "model.pkl"
 
 class TrainingPipelineConfig:
@@ -53,6 +54,7 @@ class DataTransformationConfig:
         self.transform_object_path = os.path.join(self.data_transformation_dir,"transformer",TRANSFORMER_OBJECT_FILE_NAME)
         self.transformed_train_path =  os.path.join(self.data_transformation_dir,"transformed",TRAIN_FILE_NAME.replace("csv","npz"))
         self.transformed_test_path =os.path.join(self.data_transformation_dir,"transformed",TEST_FILE_NAME.replace("csv","npz"))
+        self.transformed_target_path = os.path.join(self.data_transformation_dir,"transformer_target",TRANSFORMER_TARGET_OBJECT_FILE_NAME)
 
 class ModelTrainerConfig:
 
