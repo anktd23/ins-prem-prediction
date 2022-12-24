@@ -33,7 +33,7 @@ class ModelTrainer:
 
     def train_model(self,x,y):
         try:
-            rf_reg =  RandomForestRegressor(n_estimators = 70,
+            rf_reg =  RandomForestRegressor(n_estimators = 40,
                                             random_state = 1,
                                             max_samples = 0.5,
                                             max_features = 0.75,
@@ -61,7 +61,7 @@ class ModelTrainer:
             yhat_train = model.predict(x_train)
             r2_train_score  =r2_score(y_true=y_train, y_pred=yhat_train)
 
-            logging.info(f"Calculating r1 test score")
+            logging.info(f"Calculating r2 test score")
             yhat_test = model.predict(x_test)
             r2_test_score  =r2_score(y_true=y_test, y_pred=yhat_test)
             

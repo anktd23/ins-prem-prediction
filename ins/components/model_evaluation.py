@@ -59,12 +59,12 @@ class ModelEvaluation:
             #Currently trained model objects
             current_transformer = load_object(file_path=self.data_transformation_artifact.transform_object_path)
             current_model  = load_object(file_path=self.model_trainer_artifact.model_path)
-            current_target_transformer = load_object(file_path=self.data_transformation_artifact.target_transformer_path)
+            current_target_transformer = load_object(file_path=self.data_transformation_artifact.transformed_target_path)
             
 
 
             test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
-            target_df = test_df[TARGET_COLUMN]
+            target_df = test_df[[TARGET_COLUMN]]
             y_true =target_transformer.transform(target_df)
             # accuracy using previous trained model
             

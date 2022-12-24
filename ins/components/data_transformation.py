@@ -33,7 +33,7 @@ class DataTransformation:
     @classmethod
     def get_data_transformer_object_input(cls)->Pipeline:
         try:
-            simple_imputer = SimpleImputer(strategy='constant', fill_value=0)
+            simple_imputer = SimpleImputer(strategy='constant', fill_value=0,add_indicator=True)
             robust_scaler =  RobustScaler()
             ohe_enc = make_column_transformer((OneHotEncoder(sparse_output=False),cat_col), remainder='passthrough')
             pipeline_input = make_pipeline(ohe_enc,simple_imputer,robust_scaler)
@@ -44,7 +44,7 @@ class DataTransformation:
     @classmethod
     def get_data_transformer_object_target(cls)->Pipeline:
         try:
-            simple_imputer = SimpleImputer(strategy='constant', fill_value=0)
+            simple_imputer = SimpleImputer(strategy='constant', fill_value=0,add_indicator=True)
             robust_scaler =  RobustScaler()
             pipeline_target = Pipeline(steps=[
                     ('Imputer',simple_imputer),
