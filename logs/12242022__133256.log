@@ -1,9 +1,0 @@
-[ 2022-12-24 13:32:58,292 ] 16 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-[ 2022-12-24 13:32:58,292 ] 23 root - INFO - Exporting collection data as pandas dataframe
-[ 2022-12-24 13:32:58,292 ] 21 root - INFO - Reading data from database: ipp and collection: insurance
-[ 2022-12-24 13:32:58,295 ] 23 root - INFO - Found columns: Index([], dtype='object')
-[ 2022-12-24 13:32:58,296 ] 27 root - INFO - Row and columns in df: (0, 0)
-[ 2022-12-24 13:32:58,296 ] 29 root - INFO - Save data in feature store
-[ 2022-12-24 13:32:58,296 ] 35 root - INFO - Create feature store folder if not available
-[ 2022-12-24 13:32:58,296 ] 39 root - INFO - Save df to feature store folder
-[ 2022-12-24 13:32:58,298 ] 44 root - INFO - split dataset into train and test set

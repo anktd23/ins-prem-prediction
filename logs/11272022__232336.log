@@ -1,8 +1,0 @@
-[ 2022-11-27 23:23:37,374 ] 21 root - INFO - Exporting collection data as pandas dataframe
-[ 2022-11-27 23:23:37,375 ] 18 root - INFO - Reading data from database: ipp and collection: insurance
-[ 2022-11-27 23:23:37,377 ] 20 root - INFO - Found columns: Index([], dtype='object')
-[ 2022-11-27 23:23:37,378 ] 24 root - INFO - Row and columns in df: (0, 0)
-[ 2022-11-27 23:23:37,378 ] 27 root - INFO - Save data in feature store
-[ 2022-11-27 23:23:37,378 ] 33 root - INFO - Create feature store folder if not available
-[ 2022-11-27 23:23:37,378 ] 37 root - INFO - Save df to feature store folder
-[ 2022-11-27 23:23:37,380 ] 42 root - INFO - split dataset into train and test set
