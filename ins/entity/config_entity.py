@@ -67,7 +67,7 @@ class ModelTrainerConfig:
 
 class ModelEvaluationConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
-        self.change_threshold = 0.1
+        self.change_threshold = 0.01
 
 class ModelPusherConfig:
 
