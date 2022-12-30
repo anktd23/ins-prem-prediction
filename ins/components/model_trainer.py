@@ -33,7 +33,7 @@ class ModelTrainer:
 
     def train_model(self,x,y):
         try:
-            rf_reg =  RandomForestRegressor(n_estimators = 40,
+            rf_reg =  RandomForestRegressor(n_estimators = 70,
                                             random_state = 1,
                                             max_samples = 0.5,
                                             max_features = 0.75,
