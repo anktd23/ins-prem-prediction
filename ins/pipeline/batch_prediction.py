@@ -1,4 +1,4 @@
-from ins.exception import SensorException
+from ins.exception import InsException
 from ins.logger import logging
 from ins.predictor import ModelResolver
 import pandas as pd
@@ -42,4 +42,4 @@ def start_batch_prediction(input_file_path):
         df.to_csv(prediction_file_path,index=False,header=True)
         return prediction_file_path
     except Exception as e:
-        raise SensorException(e, sys)
+        raise InsException(e, sys)

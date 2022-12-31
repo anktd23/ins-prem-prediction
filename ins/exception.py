@@ -10,7 +10,7 @@ def error_message_detail(error, error_detail: sys):
 
 
 
-class SensorException(Exception):
+class InsException(Exception):
 
     def __init__(self,error_message, error_detail:sys):
         self.error_message = error_message_detail(

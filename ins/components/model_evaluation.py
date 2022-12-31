@@ -1,6 +1,6 @@
 from ins.predictor import ModelResolver
 from ins.entity import config_entity,artifact_entity
-from ins.exception import SensorException
+from ins.exception import InsException
 from ins.logger import logging
 from ins.utils import load_object
 from sklearn.metrics import r2_score
@@ -23,7 +23,7 @@ class ModelEvaluation:
             self.model_trainer_artifact=model_trainer_artifact
             self.model_resolver = ModelResolver()
         except Exception as e:
-            raise SensorException(e,sys)
+            raise InsException(e,sys)
 
 
 
@@ -94,4 +94,4 @@ class ModelEvaluation:
             logging.info(f"Model eval artifact: {model_eval_artifact}")
             return model_eval_artifact
         except Exception as e:
-            raise SensorException(e,sys)
+            raise InsException(e,sys)

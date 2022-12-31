@@ -1,5 +1,5 @@
 from ins.entity import artifact_entity,config_entity
-from ins.exception import SensorException
+from ins.exception import InsException
 from ins.logger import logging
 from typing import Optional
 import os,sys 
@@ -20,7 +20,7 @@ class ModelTrainer:
             self.data_transformation_artifact=data_transformation_artifact
 
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
     def fine_tune(self):
         try:
@@ -29,7 +29,7 @@ class ModelTrainer:
             
 
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
     def train_model(self,x,y):
         try:
@@ -41,7 +41,7 @@ class ModelTrainer:
             rf_reg.fit(x,y)
             return rf_reg
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
 
     def initiate_model_trainer(self,)->artifact_entity.ModelTrainerArtifact:
@@ -89,4 +89,4 @@ class ModelTrainer:
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)

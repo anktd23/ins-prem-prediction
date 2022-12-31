@@ -1,5 +1,5 @@
 from ins.entity import artifact_entity,config_entity
-from ins.exception import SensorException
+from ins.exception import InsException
 from ins.logger import logging
 from typing import Optional
 import os,sys 
@@ -27,7 +27,7 @@ class DataTransformation:
             self.data_transformation_config=data_transformation_config
             self.data_ingestion_artifact=data_ingestion_artifact
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
 
     @classmethod
@@ -39,7 +39,7 @@ class DataTransformation:
             pipeline_input = make_pipeline(ohe_enc,simple_imputer,robust_scaler)
             return pipeline_input
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
     @classmethod
     def get_data_transformer_object_target(cls)->Pipeline:
@@ -52,7 +52,7 @@ class DataTransformation:
                 ])
             return pipeline_target
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
 
     def initiate_data_transformation(self,) -> artifact_entity.DataTransformationArtifact:
@@ -125,4 +125,4 @@ class DataTransformation:
             logging.info(f"Data transformation object {data_transformation_artifact}")
             return data_transformation_artifact
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)

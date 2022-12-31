@@ -1,5 +1,5 @@
 from ins.logger import logging
-from ins.exception import SensorException
+from ins.exception import InsException
 from ins.utils import get_collection_as_dataframe
 import sys,os
 from ins.entity import config_entity

@@ -2,7 +2,7 @@
 from ins import utils
 from ins.entity import config_entity
 from ins.entity import artifact_entity
-from ins.exception import SensorException
+from ins.exception import InsException
 from ins.logger import logging
 import os,sys
 import pandas as pd 
@@ -16,7 +16,7 @@ class DataIngestion:
             logging.info(f"{'>>'*20} Data Ingestion {'<<'*20}")
             self.data_ingestion_config = data_ingestion_config
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
     def initiate_data_ingestion(self)->artifact_entity.DataIngestionArtifact:
         try:
@@ -66,5 +66,5 @@ class DataIngestion:
             return data_ingestion_artifact
 
         except Exception as e:
-            raise SensorException(error_message=e, error_detail=sys)
+            raise InsException(error_message=e, error_detail=sys)
 

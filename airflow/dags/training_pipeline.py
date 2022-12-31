@@ -11,9 +11,9 @@ with DAG(
     'ins_training',
     default_args={'retries': 2},
     # [END default_args]
-    description='Sensor Fault Detection',
+    description='Insurance Premium Prediction',
     schedule_interval="@weekly",
-    start_date=pendulum.datetime(2022, 12, 11, tz="UTC"),
+    start_date=pendulum.datetime(2022, 12, 31, tz="UTC"),
     catchup=False,
     tags=['example'],
 ) as dag:

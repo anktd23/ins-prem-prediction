@@ -1,6 +1,6 @@
 from ins.predictor import ModelResolver
 from ins.entity.config_entity import ModelPusherConfig
-from ins.exception import SensorException
+from ins.exception import InsException
 import os,sys
 from ins.utils import load_object,save_object
 from ins.logger import logging
@@ -17,7 +17,7 @@ class ModelPusher:
             self.model_trainer_artifact=model_trainer_artifact
             self.model_resolver = ModelResolver(model_registry=self.model_pusher_config.saved_model_dir)
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
 
     def initiate_model_pusher(self,)->ModelPusherArtifact:
         try:
@@ -49,4 +49,4 @@ class ModelPusher:
             logging.info(f"Model pusher artifact: {model_pusher_artifact}")
             return model_pusher_artifact
         except Exception as e:
-            raise SensorException(e, sys)
+            raise InsException(e, sys)
