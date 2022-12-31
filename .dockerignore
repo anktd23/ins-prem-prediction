@@ -1,6 +1,6 @@
 artifact
 logs
-notebook
+EDA
 prediction
 saved_models
 *.egg-info
