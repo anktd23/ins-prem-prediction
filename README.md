@@ -27,7 +27,7 @@ Exploring the dataset using pandas, numpy, matplotlib and seaborn.
 
 ### Exploratory Data Analysis
 ```bash
-Plotted different graphs to get more insights about dependent and independent variables/features.
+Plotted different graphs to get more insights about dependent and independent variables/features..
 ```
 ### Feature Engineering 
 ```bash
