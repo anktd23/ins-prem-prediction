@@ -1,5 +1,5 @@
 PyYAML
-apache-airflow
+apache-airflow==2.2.4
 dill==0.3.5.1
 dnspython==2.2.1
 fastapi==0.78.0

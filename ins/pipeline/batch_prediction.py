@@ -13,17 +13,18 @@ def start_batch_prediction(input_file_path):
         os.makedirs(PREDICTION_DIR,exist_ok=True)
         logging.info(f"Creating model resolver object")
         model_resolver = ModelResolver(model_registry="saved_models")
+        #data ingestion
         logging.info(f"Reading file :{input_file_path}")
         df = pd.read_csv(input_file_path)
         df.replace({"na":np.NAN},inplace=True)
-        #validation
-        
+        #data validation
+        #data transformation
         logging.info(f"Loading transformer to transform dataset")
         transformer = load_object(file_path=model_resolver.get_latest_transformer_path())
         
         input_feature_names =  list(transformer.feature_names_in_)
         input_arr = transformer.transform(df[input_feature_names])
-
+        #prediction
         logging.info(f"Loading model to make prediction")
         model = load_object(file_path=model_resolver.get_latest_model_path())
         prediction = model.predict(input_arr)

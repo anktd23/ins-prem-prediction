@@ -22,5 +22,6 @@ ins/pipeline/training_pipeline.py
 insurance_prem_prediction.egg-info/PKG-INFO
 insurance_prem_prediction.egg-info/SOURCES.txt
 insurance_prem_prediction.egg-info/dependency_links.txt
+insurance_prem_prediction.egg-info/requirements.txt
 insurance_prem_prediction.egg-info/requires.txt
 insurance_prem_prediction.egg-info/top_level.txt
