@@ -29,7 +29,7 @@ def start_batch_prediction(input_file_path):
         model = load_object(file_path=model_resolver.get_latest_model_path())
         prediction = model.predict(input_arr)
         prediction = prediction.reshape(-1,1)
-        logging.info(f"Target encoder to convert predicted column into categorical")
+        logging.info(f"Target encoder to convert predicted column")
         target_transformer = load_object(file_path=model_resolver.get_latest_target_transformer_path())
 
         ins_prediction = target_transformer.inverse_transform(prediction)

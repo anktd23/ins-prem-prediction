@@ -3,7 +3,7 @@ from ins.exception import InsException
 from ins.logger import logging
 from typing import Optional
 import os,sys 
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 from ins import utils
 from sklearn.metrics import r2_score
 
@@ -33,13 +33,12 @@ class ModelTrainer:
 
     def train_model(self,x,y):
         try:
-            rf_reg =  RandomForestRegressor(n_estimators = 40,
-                                            random_state = 1,
-                                            max_samples = 0.5,
-                                            max_features = 0.75,
-                                            max_depth = 5)
-            rf_reg.fit(x,y)
-            return rf_reg
+            gb_reg =  GradientBoostingRegressor(n_estimators=50,
+                                            max_depth=3, 
+                                            min_samples_split=4, 
+                                            random_state=42)
+            gb_reg.fit(x,y)
+            return gb_reg
         except Exception as e:
             raise InsException(e, sys)
 
