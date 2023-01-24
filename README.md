@@ -20,18 +20,10 @@ Database used is MongoDB
 ```bash
 Applying machine learing tasks like Data Exploration, Data Cleaning, Feature Engineering, Model Building and model testing to build a solution that should able to predict the premium of the personal for health insurance.
 ```
-### Data Exploration
-```bash
-Exploring the dataset using pandas, numpy, matplotlib and seaborn.
-```
 
-### Exploratory Data Analysis
+### EDA & Feature Engineering 
 ```bash
-Plotted different graphs to get more insights about dependent and independent variables/features..
-```
-### Feature Engineering 
-```bash
-Categorical features encoded.
+Exploring the dataset using pandas, numpy, matplotlib and seaborn.Plotted different graphs to get more insights about dependent and independent variables/features..
 ```
 
 ### Model Building
@@ -52,7 +44,7 @@ Model training done using various Machine Learning algorithms such as:
 Tested all the models to check the RMSE & R-squared.
 ```
 
-### Webpage &Deployment
+### Webpage & Deployment
 ```bash
 Created a web application that takes all the necessary inputs from the user & shows the output. Then deployed project on the AWS Platform.
 ```
